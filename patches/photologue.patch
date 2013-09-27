@@ -1,0 +1,12 @@
+--- photologue/management/commands/plcache.py	2013-01-18 12:51:03.398026105 +0100
++++ photologue/management/commands/plcache.py	2013-06-25 11:57:49.501657351 +0200
+@@ -40,4 +40,8 @@
+             for obj in cls.objects.all():
+                 if reset:
+                     obj.remove_size(photosize)
+-                obj.create_size(photosize)
++                try:
++                    obj.create_size(photosize)
++                except:
++                    print "Couldn't create size for %s" % obj
++

@@ -1,0 +1,13 @@
+--- parts/solr/solr/collection1/conf/solrconfig.xml	2013-09-26 14:11:04.757017786 +0200
++++ parts/solr/solr/collection1/conf/solrconfig.xml	2013-09-26 14:11:45.217018603 +0200
+@@ -717,7 +717,9 @@
+        <str name="spellcheck.maxCollationTries">5</str>
+        <str name="spellcheck.maxCollations">3</str>
+      </lst>
+-
++     <lst name="invariants">
++       <str name="facet.limit">200</str>
++     </lst>
+      <!-- append spellchecking to our list of components -->
+      <arr name="last-components">
+        <str>spellcheck</str>

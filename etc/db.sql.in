@@ -1,0 +1,19 @@
+-- load into database as:
+-- mysql -uroot mysql < db.sql
+--
+USE mysql;
+
+INSERT INTO user (Host,User,Password,Select_priv,Insert_priv,Update_priv,Delete_priv,Create_priv,Drop_priv,Grant_priv,Index_priv,Alter_priv,Lock_tables_priv,ssl_cipher,x509_issuer,x509_subject) VALUES ('localhost','${settings:dbusr}',PASSWORD('${settings.dbpwd}'),'Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','EMPTY','EMPTY','EMPTY');
+
+FLUSH PRIVILEGES;
+
+CREATE DATABASE ${settings:db} CHARACTER SET utf8;
+
+INSERT INTO db
+       (Host,Db,User,Select_priv,Insert_priv,Update_priv,Delete_priv,
+        Create_priv,Drop_priv,Alter_priv,Lock_tables_priv)
+       VALUES
+       ('localhost','${settings:db}','${settings:dbusr}','Y','Y','Y','Y','Y','Y','Y','Y');
+
+FLUSH PRIVILEGES;
+
